@@ -14,7 +14,7 @@ block content
           h1= poll.name
           h5.text-muted= `Created by: ${poll.author.name}`
           p= poll.description
-        form(method="POST" action=`/polls/${poll._id}`)
+        form(method="POST" action=`/polls/${poll._id}` class="form-content")
           .form-box.mt-3
             h5(class="d-block mb-2") Seleccione una opción:
             each option in poll.options

@@ -115,3 +115,9 @@ footer {
   text-decoration: none !important;
   transform: none;
 }
+
+@media(max-width: 578px) {
+  .form-content {
+    margin-bottom: 50px;
+  }
+}
