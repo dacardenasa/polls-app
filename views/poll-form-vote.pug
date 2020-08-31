@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  if error
+    div(class="alert alert-danger alert-dismissible fade show" role="alert")
+      h5.text-center= error
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  .container
+    .row.justify-content-center.mt-3
+      .col-md-6
+        a.d-block.mb-3(href="/polls") #[i(class="fa fa-arrow-left" aria-hidden="true")] back
+        .form-box
+          h1= poll.name
+          h5.text-muted= `Created by: ${poll.author.name}`
+          p= poll.description
+        form(method="POST" action=`/polls/${poll._id}`)
+          .form-box.mt-3
+            h5(class="d-block mb-2") Seleccione una opción:
+            each option in poll.options
+              .custom-control.custom-radio
+                input(type="radio" name="option" id=`${option.name}` value=`${option.name}` class="custom-control-input")
+                label.custom-control-label(for=`${option.name}`)= option.name 
+          .button-box.mt-3.d-flex.justify-content-end
+            button(type="submit" class="btn btn-primary") Vote

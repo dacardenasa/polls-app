@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  if message
+    div(class="alert alert-success alert-dismissible fade show message-style" role="alert")
+      h5.text-center= message
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  .container
+    .row.justify-content-center.mt-3
+      .col-md-6
+        .box-links.d-flex.justify-content-between
+          a.d-block.mb-3(href="/polls") #[i(class="fa fa-arrow-left" aria-hidden="true")] back
+          .box-social-links.d-flex
+            .share-btn.d-flex(data-url=`http://localhost:3000/${poll._id}` data-title="Social links" data-desc="Social links to share poll")
+              <!-- Modal button -->
+              a.d-block.mr-2(data-toggle="modal" data-target="#linkModal" style="color: #007bff;") #[i(class="fa fa-link" aria-hidden="true")]
+              a.d-block.mr-2.btn-facebook(data-id="fb") #[i(class="fa fa-facebook-official" aria-hidden="true")]
+              a.d-block.mr-2.btn-twitter(data-id="tw") #[i(class="fa fa-twitter" aria-hidden="true")]
+              <!-- Modal -->
+              .modal.fade(id="linkModal" tabindex="-1" role="dialog" aria-labelledby="linkModalLabel" aria-hidden="true")
+                .modal-dialog(role="document")
+                  .modal-content
+                    .modal-header
+                      h5.modal-title(id="linkModalLabel") Link Poll
+                      button.close(type="button" data-dismiss="modal" aria-label="Close") #[span(aria-hidden='true') &times;]
+                    .modal-body
+                      p Copy the folowing URL to share this poll
+                      span.box-link #{`http://localhost:3000/polls/${poll._id}`}
+                    .modal-footer
+                      button(type="button" class="btn btn-primary" data-dismiss="modal") Close
+        .form-box
+          h1= poll.name
+          h5.text-muted= `Created by: ${poll.author.name}`
+          p= poll.description
+        .form-box.mt-3.mb-5
+          each option in poll.options
+            .box-progress.mb-2
+              h4 #{option.name} #[span.text-muted(style="font-size: 15px;") #{option.votes} Vote(s)]
+              .progress
+                .progress-bar.progress-bar-striped.bg-success(role="progressbar" aria-valuenow=`${ poll.getTotalVotes() > 0 ? ((option.votes / poll.getTotalVotes()) * 100 ).toFixed(1) : 0 }` aria-valuemin="0" aria-valuemax="100" style=`width: ${ poll.getTotalVotes() > 0 ? ((option.votes / poll.getTotalVotes()) * 100 ).toFixed(1) : 0 }%;`) #{ poll.getTotalVotes() > 0 ? ((option.votes / poll.getTotalVotes()) * 100 ).toFixed(1) : 0 }%

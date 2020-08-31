@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  if success
+    div(class="alert alert-success alert-dismissible fade show message-style" role="alert")
+      h5.text-center= success
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  if error
+    div(class="alert alert-danger alert-dismissible fade show message-style" role="alert")
+      h5.text-center= error
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  .container-form
+    .row.mt-5
+      .col-md-8
+        .img-background
+      .col-md-4
+        .form-box
+          h1="Login"
+          form(method="POST" action="/login" id="login-form")
+            .form-group
+              input(type="email" class="form-control" id="email" name="email" placeholder="Email" aria-describedby="emailHelp")
+              small(id="emailHelp" class="form-text text-danger hide-error")="Email required"
+            .form-group
+              input(type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="passwordHelp")
+              small(id="passwordHelp" class="form-text text-danger hide-error")="Password required"
+            .form-group.d-flex.justify-content-between
+              button(class="btn btn-primary" type="submit")="Sign In"
+              a(href="/signup" class="signup-link")="Register"
+  script(src='/javascripts/login.form.js')

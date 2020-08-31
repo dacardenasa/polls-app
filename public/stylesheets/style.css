@@ -1,0 +1,117 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  background-color: #F9F9FA;
+}
+
+footer {
+  background-color: #343a40;
+  bottom: 0;
+  color: white;
+  height: 40px;
+  position: absolute;
+  width: 100%;
+}
+
+.container-form {
+  height: auto;
+  left: 50%;
+  margin: -15% 0 0 -40%;
+  position: absolute;
+  top: 50%;
+  width: 80%;
+}
+
+.img-background {
+  background: url(../images/001.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.jumbotron {
+  background-image: url(../images/002.jpg);
+  background-size: cover;
+  color: white;
+}
+
+.jumbotron-span {
+  background-color: #4394cc; 
+  border-radius: 10px; 
+  color: white;
+  padding: 10px; 
+}
+
+.form-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 2px 12px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 2px 12px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 12px -5px rgba(0,0,0,0.75);
+  padding: 15px;
+}
+
+.btn-delete,
+.btn-add {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  outline: inherit;
+  padding: 0;
+  transition: all 300ms;
+}
+
+.btn-delete:hover {
+  color: #343a40b2;
+  transform: scale(1.5);
+}
+
+.box-link {
+  background-color: #f2f2f2;
+  color: #343a40b2;
+  display: block;
+  height: auto;
+  padding: 5px;
+  width: 100%;
+}
+
+.card-poll { 
+  position: relative;
+}
+
+.btn-fixed {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.message-style {
+  position: absolute;
+  right: 2vh;
+  top: 9vh;
+}
+
+.hide-error {
+  display: none;
+}
+
+.show-error {
+  display: block;
+}
+
+.btn-add {
+  font-size: 15px;
+  text-decoration: none !important;
+  transform: none;
+}

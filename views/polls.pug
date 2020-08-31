@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  if error
+    div(class="alert alert-danger alert-dismissible fade show message-style" role="alert")
+      h5.text-center= error
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  if message
+    div(class="alert alert-success alert-dismissible fade show message-style" role="alert")
+      h5.text-center= message
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  .container
+    if user
+      a.btn.btn-primary.mt-3(href="/polls/create") New Poll
+    if polls.length > 0
+      .row.mt-5.mb-5
+        each poll in polls
+          .col-md-4.mb-3
+            div(class="card card-poll" style="width: 18rem; min-height: 17rem; margin: 0 auto;")
+              .card-body
+                if user && user.name === poll.author.name
+                  .delete-box.d-flex.justify-content-end
+                    form(method="POST" class="form-confirm" action=`/polls/delete/${poll._id}?_method=DELETE"`)
+                      input(type="hidden" name="_method" value="DELETE")
+                      button(type="submit" class="btn-delete btn-fixed") #[i(class="fa fa-trash-o" aria-hidden="true")]
+                h5(class="card-title" style="padding-right: 5px")=poll.name
+                h6(class="card-subtitle mb-2 text-muted")=`Created by: ${poll.author.name}`
+                p.card-text=`${poll.formatDescription()}`
+              .card-footer
+                .buttons(style="width=100%;")
+                  a(href=`/polls/${poll._id}/results` class="btn btn-light" style="width: 50%;")=`${poll.getTotalVotes()} Vote(s)`
+                  a(href=`/polls/${poll._id}` class="btn btn-primary" style="width: 50%;")="Vote"
+    else
+      .row
+        .col
+          .jumbotron.mt-5
+            h1.display-4 There is no #[span.jumbotron-span polls created yet] 
+            a.btn.btn-lg.btn-primary(href='/polls/create' role='button') Create poll &raquo;
+  script(src='/javascripts/view.index.js')
+    

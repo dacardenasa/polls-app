@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  if error
+    div(class="alert alert-danger alert-dismissible fade show message-style" role="alert")
+      h5.text-center= error
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  .container-form
+    .row
+      .col-md-8
+        .img-background
+      .col-md-4
+        .form-box
+          h1="Register"
+          form(method="POST" action="/signup")
+            .form-group
+              input(type="text" class=`form-control ${ name ? 'is-invalid' : ''}` id="name" name="name" placeholder="Fullname" aria-describedby="nameHelp")
+              if name
+                small(id="nameHelp" class="form-text text-danger")= name
+            .form-group
+              input(type="email" class=`form-control ${ email ? 'is-invalid' : ''}` id="email" name="email" placeholder="Email" aria-describedby="emailHelp")
+              if email
+                small(id="emailHelp" class="form-text text-danger")= email
+            .form-group
+              input(type="password" class="form-control" id="password" name="password" placeholder="Password")
+            .form-group.d-flex.justify-content-between
+              button(class="btn btn-primary" type="submit")="Sign Up"
+              a(href="/login" class="signup-link")="Login"

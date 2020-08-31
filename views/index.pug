@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  main.container.mt-3.mb-5(role='main')
+    .jumbotron
+      h1 Polls
+      p.lead
+        | You are in polls Home Page
+      a.btn.btn-lg.btn-primary(href='/polls' role='button') Go to polls &raquo;
+    .container
+    .row
+      .col-md-4
+        .card(style="width: 18rem; margin: 0 auto;")
+          img.card-img-top(src="/images/003.jpg" alt="Card image cap")
+          .card-body
+            h5.card-title= "Custom Polls"
+            p.card-text= "You can easily to make a polls throught our App and Share them with your friends, clients or whatever person you want."
+            a(href="#" class="btn btn-primary")= "Learn How"
+      .col-md-4
+        .card(style="width: 18rem; margin: 0 auto;")
+          img.card-img-top(src="/images/004.jpg" alt="Card image cap")
+          .card-body
+            h5.card-title= "Polls Data Analytics"
+            p.card-text= "Our Poll App allow you to check the state of popularity of every option you set throught graphic data"
+            a(href="#" class="btn btn-primary")= "Learn How"
+      .col-md-4
+        .card(style="width: 18rem; margin: 0 auto;")
+          img.card-img-top(src="/images/005.jpg" alt="Card image cap")
+          .card-body
+            h5.card-title= "Polls Amazing Design"
+            p.card-text= "Logic behind our Poll App allow us to build great experience for our users, built your first poll easily, go for it!"
+            a(href="#" class="btn btn-primary")= "Learn how"
+

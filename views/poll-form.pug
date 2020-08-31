@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  if error
+    div(class="alert alert-danger alert-dismissible fade show" role="alert")
+      h5.text-center= error
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+  .container
+    .row.justify-content-center.mt-3.mb-5
+      .col-md-6
+        a.d-block.mb-3(href="/polls") #[i(class="fa fa-arrow-left" aria-hidden="true")] back
+        .form-box
+          h1 New Poll
+          form(method="POST" action="/polls/create")
+            .form-group
+              input(type="text" class=`form-control ${ name ? 'is-invalid' : ''}` id="name" name="name" placeholder="Poll Name" aria-describedby="nameHelp")
+              small(id="nameHelp" class=`form-text text-danger ${ name ? 'show-error' : 'hide-error' }`)= name
+            .form-group
+              textarea(class=`form-control ${ description ? 'is-invalid' : ''}` id="description" rows="3" name="description" placeholder="Poll Description" aria-describedby="descriptionHelp")
+              small(id="descriptionHelp" class=`form-text text-danger ${ description ? 'show-error' : 'hide-error' }`)= description
+            .form-group.radios-box
+              <label for="options">Options:</label>
+              .radio-box.mb-2
+                input(type="text" class=`form-control ${ optionsError ? 'is-invalid' : ''}` id="option" name="options[]" placeholder="Option Name" aria-describedby="optionHelp")
+                small(id="optionHelp" class=`form-text text-danger ${ optionsError ? 'show-error' : 'hide-error' }`)= optionsError
+              .radio-box.mb-2
+                input(type="text" class=`form-control ${ optionsError ? 'is-invalid' : ''}` id="option" name="options[]" placeholder="Option Name" aria-describedby="optionHelp")
+                small(id="optionHelp" class=`form-text text-danger ${ optionsError ? 'show-error' : 'hide-error' }`)= optionsError
+            .add-button.mb-2
+              a(class="btn-add" id="add-option") #[i(class="fa fa-plus-square" aria-hidden="true")] Add option
+            .form-group.d-flex.justify-content-between
+              button(class="btn btn-primary" type="submit")="Create Poll"
+              a(href="/polls" class="signup-link")="Cancel"
+  script(src='/javascripts/poll.form.js')
+
