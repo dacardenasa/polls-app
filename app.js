@@ -12,7 +12,7 @@ const app = express();
 
 // Set database connection
 mongoose
-  .connect(process.env.MONGODB_URL || "mongodb://localhost:27017/polls", {
+  .connect(process.env.MONGOLAB_URI || "mongodb://localhost:27017/polls", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
