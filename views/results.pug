@@ -12,7 +12,7 @@ block content
         .box-links.d-flex.justify-content-between
           a.d-block.mb-3(href="/polls") #[i(class="fa fa-arrow-left" aria-hidden="true")] back
           .box-social-links.d-flex
-            .share-btn.d-flex(data-url=`https://polls-app-gubu.onrender.com/${poll._id}` data-title="Social links" data-desc="Social links to share poll")
+            .share-btn.d-flex(data-url=`https://polls-app-gubu.onrender.com/polls/${poll._id}` data-title="Social links" data-desc="Social links to share poll")
               <!-- Modal button -->
               a.d-block.mr-2(data-toggle="modal" data-target="#linkModal" style="color: #007bff;") #[i(class="fa fa-link" aria-hidden="true")]
               a.d-block.mr-2.btn-telegram(data-id="tg") #[i(class="fa fa-telegram" aria-hidden="true")]
@@ -26,7 +26,7 @@ block content
                       button.close(type="button" data-dismiss="modal" aria-label="Close") #[span(aria-hidden='true') &times;]
                     .modal-body
                       p Copy the folowing URL to share this poll
-                      span.box-link #{`http://localhost:3000/polls/${poll._id}`}
+                      span.box-link #{`https://polls-app-gubu.onrender.com/polls/${poll._id}`}
                     .modal-footer
                       button(type="button" class="btn btn-primary" data-dismiss="modal") Close
         .form-box
