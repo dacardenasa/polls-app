@@ -6,6 +6,9 @@
     "start": "node ./bin/www",
     "test": "jest --testEnvironment=node --verbose --forceExit --watchAll --maxWorkers=1"
   },
+  "engines": {
+    "node": ">=16.20.1"
+  },
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
